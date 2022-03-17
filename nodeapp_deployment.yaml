@@ -1,0 +1,23 @@
+// deployment.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeapp
+  labels:
+    app: nodeapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodeapp
+  template:
+    metadata:
+      labels:
+        app: nodeapp
+    spec:
+      containers:
+      - name: nodeapp
+        image: nodeapp:0.0.1
+        ports:
+        - containerPort: 8080
